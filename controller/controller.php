@@ -17,7 +17,10 @@ if(isset($_GET['view'])){
                 $password=$_POST['password'];
                 $newuser=newUser($name,$email,$sdt,$address,$password);
                 if ($newuser) {
-                    header('location:view/login.php'); 
+                    echo '<script>if(confirm("Đăng ký thành công !")){
+                    window.location.href="http://localhost/laclacshoes/view/login.php"
+                    }</script>'; 
+                    // header('location:view/login.php'); 
                     break;       
                 }else{
                     include('view/sign-up.php'); 

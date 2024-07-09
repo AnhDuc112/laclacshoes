@@ -58,7 +58,7 @@
                             <div class="w-100"></div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input type="submit" value="Đăng Ký" name="signup" class="btn btn-primary">
+                                    <button type="submit" name="signup" class="btn btn-primary">Đăng ký</button>
                                 </div>
                             </div>
                         </div>
@@ -68,3 +68,38 @@
         </div>
     </div>
 </div>
+
+<?php
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+if(isset($_POST['signup'])){
+    $name1=$_POST['name'];
+    $email1=$_POST['email'];
+    $sdt1=$_POST['sdt'];
+	$address1=$_POST['address'];
+	$pass1=$_POST['password'];
+	if($name1 ==""|| $email1="" || $sdt1="" || $address1="" || $pass1 ="" ){
+        echo '<script>confirm("Bạn đã để trống trường dữ liệu, vui lòng nhập lại !")</script>';
+    }
+    elseif(!preg_match("/^[a-zA-Z-' ]*$/",test_input($name1))) {
+        echo '<script>confirm("trường dữ liệu không hợp lệ vui lòng nhập lại !")</script>';
+    }
+    elseif(!filter_var(test_input($email1), FILTER_VALIDATE_EMAIL)) {
+        echo '<script>confirm("trường dữ liệu không hợp lệ vui lòng nhập lại !")</script>';
+      }
+    elseif(!preg_match("/[^0-9]/",test_input($sdt1))) {
+        echo '<script>confirm("trường dữ liệu không hợp lệ vui lòng nhập lại !")</script>';
+    } elseif(!preg_match("/^[a-zA-Z-' ]*$/",test_input($address1))) {
+        echo '<script>confirm("trường dữ liệu không hợp lệ vui lòng nhập lại !")</script>';
+    }
+   
+           
+}
+
+
+
+?>
