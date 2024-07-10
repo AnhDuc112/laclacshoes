@@ -64,7 +64,7 @@
   if(isset($_POST['login'])){
     $email=$_POST['email'];
     $matkhau=$_POST['pass'];
-    $sql_dangnhap="select * from NhanVien where Email='$email' or MaNV ='$email' and MatKhau='$matkhau'";
+    $sql_dangnhap="select * from nhanvien where Email='$email' or MaNV ='$email' and MatKhau='$matkhau'";
     $run_dangnhap=mysqli_query($conn,$sql_dangnhap);
     $dangnhap=mysqli_fetch_array($run_dangnhap);
     $count_dangnhap=mysqli_num_rows($run_dangnhap);
